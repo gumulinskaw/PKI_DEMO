@@ -1,0 +1,28 @@
+# ===== Python virtual environment =====
+venv/
+.env/
+.venv/
+
+# ===== Python cache =====
+__pycache__/
+*.py[cod]
+
+# ===== Compiled / build =====
+build/
+dist/
+*.egg-info/
+
+# ===== OS files =====
+.DS_Store
+Thumbs.db
+
+# ===== Editor / IDE =====
+.vscode/
+.idea/
+
+# ===== Logs =====
+*.log
+
+# ===== Certificates & keys (OPTIONAL) =====
+artifacts/
+*.key
