@@ -46,12 +46,12 @@ class Handler(BaseHTTPRequestHandler):
         now = datetime.now().isoformat(timespec="seconds")
 
         print("\n=== NOWE POŁĄCZENIE mTLS ===")
-        print(f"⏱  Czas: {now}")
-        print(f"👤 Client CN: {cert_info['subject_cn']}")
-        print(f"🏛  Issuer CN: {cert_info['issuer_cn']}")
-        print(f"🔢 Serial: {cert_info['serial']}")
-        print(f"📅 Valid from: {cert_info['not_before']}")
-        print(f"📅 Valid to:   {cert_info['not_after']}")
+        print(f"Czas: {now}")
+        print(f"Client CN: {cert_info['subject_cn']}")
+        print(f"Issuer CN: {cert_info['issuer_cn']}")
+        print(f"Serial: {cert_info['serial']}")
+        print(f"Valid from: {cert_info['not_before']}")
+        print(f"Valid to:   {cert_info['not_after']}")
         print("===========================\n")
 
         # --- AUTORYZACJA ---
@@ -61,7 +61,7 @@ class Handler(BaseHTTPRequestHandler):
                 self.send_header("Content-Type", "text/plain; charset=utf-8")
                 self.end_headers()
                 self.wfile.write(
-                    b"\xf0\x9f\x9a\xab Dostep zabroniony: klient nieautoryzowany\n"
+                    b"Dostep zabroniony: klient nieautoryzowany\n"
                 )
                 return
 
@@ -69,7 +69,7 @@ class Handler(BaseHTTPRequestHandler):
             self.send_header("Content-Type", "text/plain; charset=utf-8")
             self.end_headers()
             self.wfile.write(
-                f"🔐 Sekretny zasób. Witaj {cert_info['subject_cn']}!\n".encode("utf-8")
+                f"Sekretny zasób. Witaj {cert_info['subject_cn']}!\n".encode("utf-8")
             )
             return
 
@@ -79,7 +79,7 @@ class Handler(BaseHTTPRequestHandler):
             self.send_header("Content-Type", "text/plain; charset=utf-8")
             self.end_headers()
             self.wfile.write(
-                f"✅ mTLS OK. Zalogowany klient: {cert_info['subject_cn']}\n".encode("utf-8")
+                f"mTLS OK. Zalogowany klient: {cert_info['subject_cn']}\n".encode("utf-8")
             )
             return
 
@@ -110,8 +110,8 @@ def main():
 
     httpd.socket = ctx.wrap_socket(httpd.socket, server_side=True)
 
-    print(f"🚀 Serwer mTLS działa: https://localhost:{port}")
-    print(f"🔐 Dozwolone CN: {', '.join(ALLOWED_CLIENT_CNS)}")
+    print(f"Serwer mTLS działa: https://localhost:{port}")
+    print(f"Dozwolone CN: {', '.join(ALLOWED_CLIENT_CNS)}")
 
     httpd.serve_forever()
 
