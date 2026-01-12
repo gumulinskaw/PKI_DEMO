@@ -218,3 +218,6 @@ weryfikację łańcucha zaufania PKI,
 negocjację wersji TLS i algorytmów kryptograficznych,
 
 co nie jest możliwe do zaobserwowania bezpośrednio w kodzie aplikacji, zgodnie z architekturą TLS.
+
+9. APLIKACJA flask_mtls_app to aplikacja webowa, do której trzeba uywać certyfikatu aby się dostać.
+Certyfikat trzeba zapisać w pęku kluczy. 
